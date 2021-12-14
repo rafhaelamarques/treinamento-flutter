@@ -15,7 +15,7 @@ class _DesafioState extends State<Desafio> {
   String _user = '';
   String _name = '';
   String _bio = '';
-  late Image _avatar;
+  var _avatar;
 
   final TextEditingController _gitUser = TextEditingController();
 
@@ -28,12 +28,12 @@ class _DesafioState extends State<Desafio> {
         ),
         body: Center(
             child: Container(
-          padding: EdgeInsets.all(40),
+          padding: EdgeInsets.all(20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              // CircleAvatar(radius: 80, backgroundImage: NetworkImage($_avatar)),
+              CircleAvatar(radius: 50, backgroundImage: AssetImage('$_avatar')),
               Text('Usuário: $_user'),
               Text('Nome: $_name'),
               Text(
@@ -64,7 +64,7 @@ class _DesafioState extends State<Desafio> {
         _user = dados['login'];
         _name = dados['name'];
         _bio = dados['bio'];
-        // _avatar = dados['avatar'];
+        _avatar = dados['avatar'];
       });
     } else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
